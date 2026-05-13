@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shoghlak - Courses</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="page">
+    <div class="container">
+      <div class="pageHead">
+        <div>
+          <h1 class="pageTitle">Courses</h1>
+          <p class="pageSub">Search by title or category. Open a course to watch videos and see outcomes.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="padding:1.1rem;">
+        <div class="controls" style="margin-top:.1rem;">
+          <input id="courseSearch" class="input" type="search" placeholder="Search courses: title or category..." style="min-width:280px;flex:1;" />
+          <div class="chips" role="group" aria-label="Course categories">
+            <button type="button" class="chip" data-category="Programming">Programming</button>
+            <button type="button" class="chip" data-category="AI">AI</button>
+            <button type="button" class="chip" data-category="Cybersecurity">Cybersecurity</button>
+            <button type="button" class="chip" data-category="UI/UX">UI/UX</button>
+            <button type="button" class="chip" data-category="Business">Business</button>
+            <button type="button" class="chip" data-category="Marketing">Marketing</button>
+          </div>
+        </div>
+        <div class="controls" style="margin:.25rem 0 0; justify-content:space-between;">
+          <div class="small" id="courseCount">Loading...</div>
+          <button class="btn" type="button" data-action="clearCategories">Clear</button>
+        </div>
+      </div>
+
+      <div style="height:1rem;"></div>
+
+      <section>
+        <div id="courseResults" class="grid grid--3"></div>
+        <div id="courseEmpty" class="listEmpty" style="display:none;">No courses match your search.</div>
+      </section>
+
+      <!-- Course Details -->
+      <section id="courseDetails" class="panel" style="padding:1.1rem; display:none; margin-top:1.2rem;">
+        <div class="pageHead" style="margin-bottom:.8rem;">
+          <div>
+            <h2 class="pageTitle" style="font-size:1.75rem;" id="courseDetailTitle"></h2>
+            <div class="pageSub" id="courseDetailSubtitle" style="margin-top:.3rem;"></div>
+          </div>
+          <div style="display:flex; gap:.75rem; align-items:center;">
+            <button class="btn" type="button" data-action="closeCourse">Close</button>
+          </div>
+        </div>
+
+        <div class="courseDetail">
+          <div>
+            <img id="courseDetailThumb" class="courseThumb" alt="Course thumbnail" />
+            <div class="controls" style="margin-top:.9rem;">
+              <span class="tag tag--status" id="courseDetailDifficulty"></span>
+              <span class="tag" id="courseDetailDuration"></span>
+              <span class="tag" id="courseDetailCategory"></span>
+              <span class="tag" id="courseDetailInstructor"></span>
+            </div>
+
+            <div class="kv" style="margin-top:.8rem;">
+              <div class="small" style="font-weight:950;">Long description</div>
+              <p id="courseDetailLong" style="margin:.55rem 0 0; color:var(--text); font-weight:750; line-height:1.65;"></p>
+            </div>
+
+            <div class="kv" style="margin-top:.8rem;">
+              <div class="small" style="font-weight:950;">Tips</div>
+              <div id="courseDetailTips" class="chips" style="margin-top:.6rem;"></div>
+            </div>
+
+            <div class="kv" style="margin-top:.8rem;">
+              <div class="small" style="font-weight:950;">Learning outcomes</div>
+              <div id="courseDetailOutcomes" class="chips" style="margin-top:.6rem;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="kv">
+              <div class="small" style="font-weight:950;">Course content</div>
+              <div id="courseDetailContent" class="chips" style="margin-top:.6rem;"></div>
+            </div>
+
+            <div class="hr"></div>
+
+            <div class="videoGrid">
+              <div>
+                <div class="small" style="font-weight:950; margin-bottom:.55rem;">Videos</div>
+                <div id="courseDetailVideos" class="videoGrid"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/courses.js"></script>
+</body>
+</html>

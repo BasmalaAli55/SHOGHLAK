@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shoghlak - Profile</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="page">
+    <div class="container">
+      <div class="pageHead">
+        <div>
+          <h1 class="pageTitle">Profile</h1>
+          <p class="pageSub">Your applications, statuses, and learning recommendations.</p>
+        </div>
+        <div style="display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; justify-content:flex-end;">
+          <button class="btn" type="button" data-action="edit">Edit profile</button>
+        </div>
+      </div>
+
+      <section class="twoCol">
+        <div class="panel" style="padding:1.1rem;">
+          <div class="small" style="font-weight:950; margin-bottom:.65rem;">User information</div>
+          <div class="kv">
+            <div class="kvRow"><div class="kvKey">Name</div><div class="kvVal" id="pName"></div></div>
+            <div class="kvRow"><div class="kvKey">Email</div><div class="kvVal" id="pEmail"></div></div>
+            <div class="kvRow"><div class="kvKey">Join date</div><div class="kvVal" id="pJoin"></div></div>
+          </div>
+
+          <div class="hr"></div>
+
+          <div class="controls" style="margin:0; justify-content:space-between;">
+            <div>
+              <div class="small" style="font-weight:950;">Applications</div>
+              <div style="font-weight:1000; font-size:1.2rem; margin-top:.3rem;" id="pAppliedCount">0</div>
+            </div>
+            <div>
+              <div class="small" style="font-weight:950;">Status summary</div>
+              <div class="chips" id="pStatusSummary" style="margin-top:.5rem;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="padding:1.1rem;">
+          <div class="small" style="font-weight:950; margin-bottom:.65rem;">Saved applications</div>
+          <div id="pApplications" class="grid" style="grid-template-columns:1fr; gap:.8rem;"></div>
+          <div id="pAppsEmpty" class="listEmpty" style="display:none;">No applications yet. Go to Jobs and apply!</div>
+        </div>
+      </section>
+
+      <section style="margin-top:1.2rem;">
+        <div class="panel" style="padding:1.1rem;">
+          <div class="pageHead" style="margin-bottom:.9rem;">
+            <div>
+              <div class="small" style="font-weight:950;">Recommended courses</div>
+              <p class="pageSub" style="margin-top:.35rem;">Based on your job skills and categories from applications.</p>
+            </div>
+          </div>
+          <div id="pRecommended" class="grid grid--3"></div>
+        </div>
+      </section>
+
+      <section id="editPanel" class="panel" style="padding:1.1rem; display:none; margin-top:1.2rem;">
+        <div class="pageHead" style="margin-bottom:.8rem;">
+          <div>
+            <div class="small" style="font-weight:950;">Edit profile</div>
+            <p class="pageSub" style="margin-top:.35rem;">Update your name and email. (Password stays unchanged in this local app.)</p>
+          </div>
+          <div>
+            <button class="btn" type="button" data-action="cancelEdit">Cancel</button>
+          </div>
+        </div>
+
+        <form id="editForm" class="formGrid">
+          <div><label class="formLabel" for="eName">Full Name</label><input id="eName" class="input" required/></div>
+          <div><label class="formLabel" for="eEmail">Email</label><input id="eEmail" class="input" type="email" required/></div>
+          <div class="full" style="display:flex; gap:.8rem; flex-wrap:wrap; justify-content:flex-end; align-items:center;">
+            <div id="editMsg" aria-live="polite"></div>
+            <button class="btn btn--primary" type="submit">Save changes</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

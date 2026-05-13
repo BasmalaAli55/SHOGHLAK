@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shoghlak - Authentication</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="page">
+    <div class="container">
+      <div class="pageHead">
+        <div>
+          <h1 class="pageTitle">Welcome to Shoghlak</h1>
+          <p class="pageSub">Sign in to apply for jobs and track your learning progress.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="padding:1.1rem;">
+        <div class="controls" style="margin:.25rem 0 1rem;">
+          <button class="btn" type="button" data-auth-tab="signin">Sign In</button>
+          <button class="btn btn--primary" type="button" data-auth-tab="register">Register</button>
+        </div>
+
+        <div id="authMessages" aria-live="polite"></div>
+
+        <section id="authForms">
+          <form id="signinForm" class="authForm" style="display:none;">
+            <h2 style="margin:0 0 .75rem; font-size:1.35rem;">Sign In</h2>
+            <div class="formGrid">
+              <div class="full">
+                <label class="formLabel" for="signinEmail">Email</label>
+                <input id="signinEmail" class="input" type="email" autocomplete="email" required placeholder="you@example.com" />
+              </div>
+              <div class="full">
+                <label class="formLabel" for="signinPassword">Password</label>
+                <input id="signinPassword" class="input" type="password" autocomplete="current-password" required placeholder="Your password" />
+              </div>
+              <div class="full" style="display:flex; gap:.7rem; flex-wrap:wrap; align-items:center; margin-top:.5rem;">
+                <button class="btn btn--primary" type="submit">Sign In</button>
+                <a class="link" href="/auth.html">Need an account?</a>
+              </div>
+            </div>
+          </form>
+
+          <form id="registerForm" class="authForm" style="display:block;">
+            <h2 style="margin:0 0 .75rem; font-size:1.35rem;">Create Account</h2>
+            <div class="formGrid">
+              <div>
+                <label class="formLabel" for="registerName">Full Name</label>
+                <input id="registerName" class="input" type="text" autocomplete="name" required placeholder="Your name" />
+              </div>
+              <div>
+                <label class="formLabel" for="registerEmail">Email</label>
+                <input id="registerEmail" class="input" type="email" autocomplete="email" required placeholder="you@example.com" />
+              </div>
+              <div class="full">
+                <label class="formLabel" for="registerPassword">Password</label>
+                <input id="registerPassword" class="input" type="password" autocomplete="new-password" required placeholder="Minimum 6 characters" minlength="6" />
+              </div>
+              <div class="full" style="display:flex; gap:.7rem; flex-wrap:wrap; align-items:center; margin-top:.5rem;">
+                <button class="btn btn--primary" type="submit">Register</button>
+                <span class="small">Already have an account? Use Sign In.</span>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <div class="hr"></div>
+        <p class="small" style="margin:0;">
+          This app uses <b>localStorage</b>. Refreshing keeps you logged in.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <div class="footer__brand">Shoghlak</div>
+        <p class="footer__text">Jobs + learning, fully connected and saved locally.</p>
+      </div>
+      <div>
+        <div class="footer__title">Explore</div>
+        <a class="footer__link" href="/jobs.html">Jobs</a>
+        <a class="footer__link" href="/courses.html">Courses</a>
+        <a class="footer__link" href="/profile.html">Profile</a>
+      </div>
+      <div>
+        <div class="footer__title">Account</div>
+        <a class="footer__link" href="/auth.html">Sign in / Register</a>
+        <span class="footer__copy">© <span id="year"></span> Shoghlak</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/storage.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

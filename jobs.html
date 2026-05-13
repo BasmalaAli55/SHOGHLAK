@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shoghlak - Jobs</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header id="site-header" class="site-header"></header>
+
+  <main class="page">
+    <div class="container">
+      <div class="pageHead">
+        <div>
+          <h1 class="pageTitle">Jobs</h1>
+          <p class="pageSub">Search by title, skills, or company. Apply and track statuses—saved locally.</p>
+        </div>
+      </div>
+
+      <div class="panel" style="padding:1.1rem;">
+        <div class="controls" style="margin-top:.1rem;">
+          <input id="jobSearch" class="input" type="search" placeholder="Search jobs: title, skills, or company..." style="min-width:280px;flex:1;" />
+
+          <div class="chips" role="group" aria-label="Filters">
+            <button type="button" class="chip" data-filter="remote">Remote</button>
+            <button type="button" class="chip" data-filter="fullTime">Full Time</button>
+            <button type="button" class="chip" data-filter="partTime">Part Time</button>
+            <button type="button" class="chip" data-filter="technologyTag:Technology">Technology</button>
+            <button type="button" class="chip" data-filter="technologyTag:Design">Design</button>
+            <button type="button" class="chip" data-filter="technologyTag:Marketing">Marketing</button>
+          </div>
+        </div>
+
+        <div class="controls" style="margin:.25rem 0 0; justify-content:space-between;">
+          <div class="small" id="jobCount">Loading...</div>
+          <button class="btn" type="button" data-action="clearFilters">Clear</button>
+        </div>
+      </div>
+
+      <div style="height:1rem;"></div>
+
+      <section>
+        <div id="jobResults" class="grid grid--3"></div>
+        <div id="jobEmpty" class="listEmpty" style="display:none;">No jobs match your search.</div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Job Details Modal -->
+  <div id="jobModalOverlay" class="modalOverlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="jobModalTitle">
+      <div class="modalHeader">
+        <div>
+          <h2 id="jobModalTitle" class="modalTitle">Job Details</h2>
+          <div class="small" id="jobModalCompany" style="margin-top:.2rem;"></div>
+        </div>
+        <button id="jobModalClose" class="modalClose" type="button">Close</button>
+      </div>
+      <div class="modalBody">
+        <div class="detailGrid">
+          <div class="detailLeft">
+            <div class="kv">
+              <div class="kvRow"><div class="kvKey">Status</div><div class="kvVal" id="jobModalStatus"></div></div>
+              <div class="kvRow"><div class="kvKey">Salary</div><div class="kvVal" id="jobModalSalary"></div></div>
+              <div class="kvRow"><div class="kvKey">Location</div><div class="kvVal" id="jobModalLocation"></div></div>
+              <div class="kvRow"><div class="kvKey">Category</div><div class="kvVal" id="jobModalCategory"></div></div>
+            </div>
+
+            <div class="kv">
+              <div class="small" style="font-weight:950;">Skills</div>
+              <div id="jobModalSkills" class="chips" style="margin-top:.5rem;"></div>
+            </div>
+
+            <div class="kv">
+              <div class="small" style="font-weight:950;">Description</div>
+              <p id="jobModalDesc" style="margin:.55rem 0 0; color: var(--text); font-weight:750; line-height:1.6;"></p>
+            </div>
+          </div>
+
+          <div class="detailRight">
+            <div class="card" style="border:none;background:transparent;">
+              <div class="card__img" style="height:190px; border:1px solid var(--border); border-radius:16px;">
+                <img id="jobModalImage" alt="Job" />
+              </div>
+              <div class="card__body" style="padding:0; margin-top:.9rem;">
+                <div class="success" id="jobAppSuccess" style="display:none;">Your application has been submitted successfully.</div>
+                <form id="applyForm" class="panel" style="padding:1rem; margin-top:.8rem;">
+                  <div class="small" style="font-weight:950; margin-bottom:.6rem;">Apply Now</div>
+                  <div class="formGrid">
+                    <div><label class="formLabel" for="apName">Full Name</label><input id="apName" class="input" required /></div>
+                    <div><label class="formLabel" for="apEmail">Email</label><input id="apEmail" class="input" type="email" required /></div>
+                    <div><label class="formLabel" for="apPhone">Phone Number</label><input id="apPhone" class="input" required /></div>
+                    <div><label class="formLabel" for="apAge">Age</label><input id="apAge" class="input" type="number" min="14" required /></div>
+                    <div><label class="formLabel" for="apCountry">Country</label><input id="apCountry" class="input" required /></div>
+                    <div><label class="formLabel" for="apEducation">Education</label><input id="apEducation" class="input" required /></div>
+                    <div class="full"><label class="formLabel" for="apSkills">Skills</label><input id="apSkills" class="input" required placeholder="e.g. JS, SQL, Figma" /></div>
+                    <div class="full"><label class="formLabel" for="apExperience">Experience</label><textarea id="apExperience" class="input textarea" required></textarea></div>
+                    <div class="full"><label class="formLabel" for="apDesiredJob">Desired Job</label><input id="apDesiredJob" class="input" required /></div>
+                    <div class="full"><label class="formLabel" for="apCvLink">CV Link</label><input id="apCvLink" class="input" type="url" required placeholder="https://..." /></div>
+                    <div class="full"><label class="formLabel" for="apNotes">Notes</label><textarea id="apNotes" class="input textarea"></textarea></div>
+                    <div class="full" style="display:flex; gap:.8rem; flex-wrap:wrap; align-items:center; justify-content:flex-end;">
+                      <button class="btn" type="button" data-action="prefill">Prefill</button>
+                      <button class="btn btn--primary" type="submit">Submit Application</button>
+                    </div>
+                  </div>
+                  <div class="small" style="margin-top:.6rem;">Saved in localStorage as status: <b>Pending</b>.</div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/storage.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/jobs.js"></script>
+</body>
+</html>
