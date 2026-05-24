@@ -13,7 +13,7 @@
 
     const left = `
       <div class="navLeft">
-        <a href="/index.html" class="brand" data-nav="home" aria-label="Shoghlak home">
+        <a href="./index.html" class="brand" data-nav="home" aria-label="Shoghlak home">
           <div class="logo" aria-hidden="true">S</div>
           <div class="brandText">
             <b>Shoghlak</b>
@@ -21,12 +21,12 @@
           </div>
         </a>
         <nav class="navLinks" aria-label="Main navigation">
-          <a href="/index.html" data-route="home">Home</a>
+          <a href="./index.html" data-route="home">Home</a>
         <a href="jobs.html" data-route="jobs">Jobs</a>
 
-          <a href="courses.html" data-route="courses">Courses</a>
+          <a href="./courses.html" data-route="courses">Courses</a>
 
-          <a href="profile.html" data-route="profile">Profile</a>
+          <a href="./profile.html" data-route="profile">Profile</a>
 
         </nav>
       </div>
