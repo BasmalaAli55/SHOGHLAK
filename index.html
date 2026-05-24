@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Shoghlak - Job & Learning Platform</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
   <header id="site-header" class="site-header"></header>
@@ -80,7 +80,7 @@
                 <span id="themeLabel">Dark</span>
               </button>
             </div>
-            <a class="link" href="/courses.html">Start learning →</a>
+            <a class="link" href="./courses.html">Start learning →</a>
           </div>
         </div>
       </div>
@@ -147,20 +147,20 @@
       </div>
       <div>
         <div class="footer__title">Explore</div>
-        <a class="footer__link" href="/jobs.html">Jobs</a>
-        <a class="footer__link" href="/courses.html">Courses</a>
-        <a class="footer__link" href="/profile.html">Profile</a>
+        <a class="footer__link" href="./jobs.html">Jobs</a>
+        <a class="footer__link" href="./courses.html">Courses</a>
+        <a class="footer__link" href="./profile.html">Profile</a>
       </div>
       <div>
         <div class="footer__title">Get started</div>
-        <a class="footer__link" href="/auth.html">Sign in / Register</a>
+        <a class="footer__link" href="./auth.html">Sign in / Register</a>
         <span class="footer__copy">© <span id="year"></span> Shoghlak</span>
       </div>
     </div>
   </footer>
 
-<script src="/js/storage.js"></script>
-  <script src="/js/main.js"></script>
+<script src="./js/storage.js"></script>
+  <script src="./js/main.js"></script>
   <script>
     // Seed & featured rendering for index (local-first)
     (function(){
@@ -224,7 +224,7 @@
           featuredJobs.addEventListener('click', function(e){
             var el = e.target && e.target.closest('[data-job-id]');
             if(!el) return;
-            location.href = '/jobs.html#job=' + encodeURIComponent(el.getAttribute('data-job-id'));
+            location.href = './jobs.html#job=' + encodeURIComponent(el.getAttribute('data-job-id'));
           });
         }
 
@@ -233,7 +233,7 @@
           featuredCourses.addEventListener('click', function(e){
             var el = e.target && e.target.closest('[data-course-id]');
             if(!el) return;
-            location.href = '/courses.html#course=' + encodeURIComponent(el.getAttribute('data-course-id'));
+            location.href = './courses.html#course=' + encodeURIComponent(el.getAttribute('data-course-id'));
           });
         }
 
