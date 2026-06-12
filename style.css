@@ -1,0 +1,510 @@
+/* الألوان الافتراضية: المظهر الفاتح (Light Mode) */
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #4338ca;
+    --background: #f8fafc;
+    --navbar-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --light-section: #f1f5f9;
+    --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* الألوان عند التحويل: المظهر الغامق (Dark Mode) */
+[data-theme="dark"] {
+    --background: #0f172a;
+    --navbar-bg: rgba(15, 23, 42, 0.95);
+    --card-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --light-section: #1e293b;
+    --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-main);
+    transition: var(--transition);
+    overflow-x: hidden;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 6%;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.theme-btn {
+    background: var(--light-section);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    transition: var(--transition);
+}
+
+.theme-btn:hover {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+}
+
+.hero {
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.badge-premium {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 35px;
+    font-size: 17px;
+}
+
+.search-bar {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 50px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.4);
+}
+
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 12px;
+    z-index: 1200;
+    pointer-events: none;
+}
+
+.toast {
+    min-width: 280px;
+    max-width: 360px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    color: #fff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
+    opacity: 0;
+    transform: translateX(20px);
+    animation: toast-in 0.26s ease forwards;
+    pointer-events: auto;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.toast-success { background: linear-gradient(135deg, #16a34a, #4ade80); }
+.toast-error { background: linear-gradient(135deg, #dc2626, #f87171); }
+.toast-info { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+
+@keyframes toast-in {
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes toast-out {
+    to { opacity: 0; transform: translateX(20px); }
+}
+
+.search-bar i {
+    color: #64748b;
+    margin-right: 10px;
+}
+
+.search-bar input {
+    border: none;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
+    color: #0f172a;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -3px rgba(79, 70, 229, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.section-container {
+    padding: 80px 6%;
+}
+
+.bg-light { background-color: var(--light-section); }
+
+.section-title {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 35px;
+    font-size: 16px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px -5px rgba(0, 0, 0, 0.15);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 26px;
+}
+
+.companies-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 5px 25px;
+}
+.companies-carousel::-webkit-scrollbar { display: none; }
+
+.company-card {
+    min-width: 280px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.company-banner {
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.company-logo-box {
+    width: 60px;
+    height: 60px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    position: absolute;
+    bottom: -30px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.company-details {
+    padding: 45px 20px 24px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    color: var(--text-main);
+    padding: 35px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.large-modal {
+    max-width: 1100px;
+    height: 85vh;
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 26px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+.studio-layout {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 30px;
+    height: 90%;
+    margin-top: 25px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.studio-title { margin: 20px 0 12px; font-size: 22px; }
+
+.studio-assessment {
+    background: var(--light-section);
+    border-radius: 16px;
+    padding: 24px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+}
+
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--text-main); }
+.form-group input { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--text-main); }
+
+.w-100 { width: 100%; }
+.mt-3 { margin-top: 15px; }
+
+@media (max-width: 992px) {
+    .studio-layout { grid-template-columns: 1fr; overflow-y: auto; }
+    .nav-links { display: none; }
+    .hero h1 { font-size: 36px; }
+}
+
+
+
+/* استيراد خط رومانسي وفني مخصص لتوقيع اسم بسمة فقط */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
+/* التصميم الأساسي للفوتر الكبير */
+.main-footer {
+    background-color: #0f172a; /* لون كحلي داكن فخم جداً */
+    color: #94a3b8;
+    padding: 60px 6% 20px;
+    margin-top: 80px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* تقسيم عناصر الفوتر على شكل شبكة هندسية */
+.footer-grid {
+    display: block;
+    margin-bottom: 40px;
+}
+
+/* لو المتصفح يدعم الجريد هيقسمهم 3 أعمدة متناسقة */
+@media (min-width: 768px) {
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+.footer-brand h3 {
+    color: #ffffff;
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.footer-brand p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 320px;
+}
+
+.footer-links h4, .footer-support h4 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.footer-links ul, .footer-support ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li, .footer-support ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a, .footer-support a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover, .footer-support a:hover {
+    color: #4f46e5; /* يضئ بلون الموقع الأساسي عند مرور الماوس */
+}
+
+/* الشريط السفلي المخصص للحقوق والتوقيع */
+.footer-bottom {
+    border-top: 1px solid #334155;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-bottom .copyrights {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.footer-bottom .signature-text {
+    font-size: 14px;
+    color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* 🌟 التصميم والخط السحري والاحترافي لاسم بسمة 🌟 */
+.besmala-signature {
+    font-family: 'Caveat', cursive, sans-serif; /* خط مائل ويدوي فخم وجذاب */
+    font-size: 24px; /* حجمه أكبر ومميز عن الكلام اللي جنبه */
+    color: #818cf8; /* لون بنفسجي مضيء ساحر يجذب العين فوراً */
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.3); /* توهج خفيف فخم جداً */
+    display: inline-block;
+    transform: rotate(-2px); /* ميلان خفيف جداً يوحى بالتوقيع الشخصي */
+}
+
+/* توافق ألوان الفوتر بالكامل في الوضع الداكن */
+[data-theme="dark"] .main-footer {
+    background-color: #020617; /* أسود حالك غامق ليعطي تباين رائع */
+    border-top-color: #1e293b;
+}

@@ -1,246 +1,158 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Shoghlak - Job & Learning Platform</title>
-  <link rel="stylesheet" href="./css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOGHLAK | Premium Learning & Placement Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header id="site-header" class="site-header"></header>
 
-  <main>
-    <section class="hero">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__content">
-        <div class="hero__copy">
-          <p class="badge">New • Jobs + Courses in one place</p>
-          <h1 class="hero__title">Find your next role. Upgrade your skills.</h1>
-          <p class="hero__desc">
-            Shoghlak connects job seekers with practical learning. Search jobs, apply in minutes,
-            and learn with curated courses.
-          </p>
-          <div class="hero__actions">
-            <button class="btn btn--primary" type="button" data-nav="jobs">Explore Jobs</button>
-            <button class="btn btn--ghost" type="button" data-nav="courses">Explore Courses</button>
-          </div>
-          <div class="hero__stats" role="list">
-            <div class="stat" role="listitem">
-              <div class="stat__num" id="statJobs">12+</div>
-              <div class="stat__label">Featured jobs</div>
+    <nav class="navbar">
+        <div class="logo"><i class="fa-solid fa-briefcase"></i> SHOGHLAK</div>
+        <ul class="nav-links">
+            <li><a href="#companies-section">Companies</a></li>
+            <li><a href="#jobs-section">Jobs</a></li>
+            <li><a href="#courses-section">Courses</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="theme-btn" onclick="toggleTheme()">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <div class="auth-buttons" id="auth-zone">
+                <button class="btn btn-outline" onclick="openAuthModal('login')">Login</button>
+                <button class="btn btn-primary" onclick="openAuthModal('register')">Register</button>
             </div>
-            <div class="stat" role="listitem">
-              <div class="stat__num" id="statCourses">12+</div>
-              <div class="stat__label">Featured courses</div>
-            </div>
-            <div class="stat" role="listitem">
-              <div class="stat__num">LocalStorage</div>
-              <div class="stat__label">Fully functional</div>
-            </div>
-          </div>
         </div>
+    </nav>
 
-        <div class="hero__card" aria-label="Shoghlak preview">
-          <div class="hero__cardTop">
-            <div class="avatar avatar--big">S</div>
-            <div>
-              <div class="muted">Your next step</div>
-              <div class="strong" id="welcomeLine">Sign in to apply</div>
-            </div>
-          </div>
-
-          <div class="hero__cardGrid">
-            <div class="mini">
-              <div class="mini__icon">🔎</div>
-              <div class="mini__title">Search jobs</div>
-              <div class="mini__text">Title, skills, company.</div>
-            </div>
-            <div class="mini">
-              <div class="mini__icon">🎓</div>
-              <div class="mini__title">Learn courses</div>
-              <div class="mini__text">Embedded YouTube videos.</div>
-            </div>
-            <div class="mini">
-              <div class="mini__icon">📄</div>
-              <div class="mini__title">Apply fast</div>
-              <div class="mini__text">Applications saved automatically.</div>
-            </div>
-            <div class="mini">
-              <div class="mini__icon">👤</div>
-              <div class="mini__title">Track progress</div>
-              <div class="mini__text">Status per application.</div>
-            </div>
-          </div>
-
-          <div class="hero__cardBottom">
-            <div class="themeToggle">
-              <span class="muted">Theme</span>
-              <button id="themeToggle" class="themeBtn" type="button" aria-label="Toggle dark/light mode">
-                <span id="themeIcon">🌙</span>
-                <span id="themeLabel">Dark</span>
-              </button>
-            </div>
-            <a class="link" href="./courses.html">Start learning →</a>
-          </div>
+    <header class="hero">
+        <span class="badge-premium">⭐ New Idea: Learn & Get Hired</span>
+        <h1>Find a Job.<br>Learn the Skills.</h1>
+        <p>If a job needs a skill you do not have, our website gives you the course, the PDF book, and a quiz to help you get hired fast!</p>
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search for jobs or courses...">
+            <button class="btn btn-primary">Search</button>
         </div>
-      </div>
+    </header>
+
+    <section id="companies-section" class="section-container">
+        <h2 class="section-title">Top Companies</h2>
+        <p class="section-subtitle">Move left or right to see companies that work on mobile phones.</p>
+        <div class="companies-carousel" id="companies-container"></div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="sectionHead">
-          <h2 class="sectionTitle">Featured jobs</h2>
-          <p class="sectionSubtitle">Realistic roles with search, filters, and application saving.</p>
-        </div>
-        <div id="featuredJobs" class="grid grid--3"></div>
-        <div class="sectionActions">
-          <button class="btn btn--primary" type="button" data-nav="jobs">View all jobs</button>
-        </div>
-      </div>
+    <section id="jobs-section" class="section-container bg-light">
+        <h2 class="section-title">Available Jobs</h2>
+        <p class="section-subtitle">Apply for a job now. If you need a course, we will open it for you.</p>
+        <div class="grid-container" id="jobs-container"></div>
     </section>
 
-    <section class="section section--alt">
-      <div class="container">
-        <div class="sectionHead">
-          <h2 class="sectionTitle">Featured courses</h2>
-          <p class="sectionSubtitle">Embedded videos and learning outcomes—built for busy learners.</p>
-        </div>
-        <div id="featuredCourses" class="grid grid--3"></div>
-        <div class="sectionActions">
-          <button class="btn btn--primary" type="button" data-nav="courses">View all courses</button>
-        </div>
-      </div>
+    <section id="courses-section" class="section-container">
+        <h2 class="section-title">Our Courses</h2>
+        <p class="section-subtitle">Watch videos, read PDFs, and take quizzes to get a certificate.</p>
+        <div class="grid-container" id="courses-container"></div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="sectionHead">
-          <h2 class="sectionTitle">Why choose us</h2>
-          <p class="sectionSubtitle">A modern workflow: search → apply → learn → track.</p>
+    <div id="course-viewer-modal" class="modal">
+        <div class="modal-content large-modal">
+            <span class="close-btn" onclick="closeModal('course-viewer-modal')">&times;</span>
+            <div class="studio-layout">
+                <div class="studio-media" id="course-content">
+                    <div class="video-container">
+                        <iframe id="video-player" src="" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <h3 id="modal-course-title" class="studio-title">Course Title</h3>
+                    <a id="pdf-link" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                        <i class="fa-solid fa-file-pdf"></i> Open Course PDF Book
+                    </a>
+                    <button class="btn btn-primary w-100 mt-3" onclick="startQuiz()" id="start-quiz-btn">
+                        <i class="fa-solid fa-star"></i> Complete Course & Start Quiz
+                    </button>
+                </div>
+                <div class="studio-assessment" id="quiz-section" style="display: none;">
+                    <h3><i class="fa-solid fa-star"></i> Course Quiz (10 Questions)</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 5px;">Answer all 10 questions correctly to pass the course.</p>
+                    <p id="quiz-progress" style="color: var(--primary); font-weight: 700; margin-bottom: 15px;">Question: <span id="current-question">1</span>/10</p>
+                    <div id="quiz-container"></div>
+                </div>
+            </div>
         </div>
-        <div class="why grid grid--3">
-          <article class="whyCard">
-            <div class="whyCard__icon">⚡</div>
-            <h3 class="whyCard__title">Fast applications</h3>
-            <p class="whyCard__text">Submit a complete form and store it instantly in localStorage.</p>
-          </article>
-          <article class="whyCard">
-            <div class="whyCard__icon">🔒</div>
-            <h3 class="whyCard__title">Local-first auth</h3>
-            <p class="whyCard__text">Register and sign in with validation, persistence, and logout.</p>
-          </article>
-          <article class="whyCard">
-            <div class="whyCard__icon">🎯</div>
-            <h3 class="whyCard__title">Actionable learning</h3>
-            <p class="whyCard__text">Each course includes outcomes, tips, and multiple videos.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div>
-        <div class="footer__brand">Shoghlak</div>
-        <p class="footer__text">A complete local web app for jobs and learning.</p>
-      </div>
-      <div>
-        <div class="footer__title">Explore</div>
-        <a class="footer__link" href="./jobs.html">Jobs</a>
-        <a class="footer__link" href="./courses.html">Courses</a>
-        <a class="footer__link" href="./profile.html">Profile</a>
-      </div>
-      <div>
-        <div class="footer__title">Get started</div>
-        <a class="footer__link" href="./auth.html">Sign in / Register</a>
-        <span class="footer__copy">© <span id="year"></span> Shoghlak</span>
-      </div>
     </div>
-  </footer>
 
-<script src="./js/storage.js"></script>
-  <script src="./js/main.js"></script>
-  <script>
-    // Seed & featured rendering for index (local-first)
-    (function(){
-      document.addEventListener('DOMContentLoaded', function(){
-        var featuredJobs = document.getElementById('featuredJobs');
-        var featuredCourses = document.getElementById('featuredCourses');
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('login-modal')">&times;</span>
+            <h2 id="auth-modal-title">Create an Account</h2>
+            <p id="auth-modal-subtitle" style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Sign in or register to save your score and apply for jobs.</p>
+            <form id="auth-form" onsubmit="handleAuth(event)">
+                <div class="form-group" id="name-field">
+                    <label>Your Name</label>
+                    <input type="text" id="reg-name" placeholder="Example: John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" id="reg-email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group" id="password-field">
+                    <label>Password</label>
+                    <input type="password" id="reg-password" required minlength="8" placeholder="Minimum 8 characters">
+                </div>
+                <div class="form-group" id="confirm-password-field">
+                    <label>Confirm Password</label>
+                    <input type="password" id="reg-password-confirm" required minlength="8" placeholder="Repeat your password">
+                </div>
+                <button type="submit" id="auth-submit-btn" class="btn btn-primary w-100">Create Account</button>
+                <button type="button" class="btn btn-link mt-3" onclick="switchAuthMode('login')" id="auth-switch-btn">Already have an account? Login</button>
+            </form>
+        </div>
+    </div>
 
-        var jobs = window.ShoghlakStorage.getJobs ? window.ShoghlakStorage.getJobs() : [];
-        var courses = window.ShoghlakStorage.getCourses ? window.ShoghlakStorage.getCourses() : [];
+    <footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3><i class="fa-solid fa-briefcase"></i> SHOGHLAK</h3>
+            <p>Premium platform for modern learning and direct corporate hiring.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="#companies-section">Companies</a></li>
+                <li><a href="#jobs-section">Available Jobs</a></li>
+                <li><a href="#courses-section">Our Courses</a></li>
+            </ul>
+        </div>
+        <div class="footer-support">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p class="copyrights">&copy; 2026 SHOGHLAK Platform. All rights reserved.</p>
+        <p class="signature-text">Handcrafted with <i class="fa-solid fa-heart" style="color: #ff3333;"></i> by <span class="besmala-signature">Basmala😚</span></p>
+    </div>
+</footer>
 
-        function escapeHtml(str){
-          return String(str).replace(/[&<>"']/g, function(m){
-            return ({'&':'&amp;','<':'<','>':'>','"':'"',"'":'&#039;'}[m]);
-          });
-        }
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content" style="max-width: 400px;">
+            <h2 id="confirm-title">Confirm Action</h2>
+            <p id="confirm-message" style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;"></p>
+            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <button type="button" class="btn btn-outline" onclick="closeConfirmModal()">Cancel</button>
+                <button type="button" id="confirm-btn" class="btn btn-primary" onclick="handleConfirmAction()">Confirm</button>
+            </div>
+        </div>
+    </div>
 
-        function renderJob(job){
-          var skills = (job.skills||[]).slice(0,5);
-          var remoteTag = job.remote ? '<span class="tag tag--remote">Remote</span>' : '';
-          return (
-            '<article class="card" data-job-id="'+job.id+'" tabindex="0">' +
-              '<div class="card__img"><img src="'+job.image+'" alt="'+escapeHtml(job.title)+'" loading="lazy"></div>' +
-              '<div class="card__body">' +
-                '<div class="card__top">' +
-                  '<span class="tag tag--status">'+escapeHtml(job.status)+'</span>' +
-                  remoteTag +
-                '</div>' +
-                '<div class="card__title">'+escapeHtml(job.title)+'</div>' +
-                '<div class="card__company">'+escapeHtml(job.company)+'</div>' +
-                '<div class="small" style="color:var(--muted); font-weight:800; line-height:1.6;">'+escapeHtml(job.description).slice(0,90) + (job.description.length>90?'…':'')+'</div>' +
-                '<div class="card__meta">' +
-                  '<span class="metaItem">📍 '+escapeHtml(job.location)+'</span>' +
-                '</div>' +
-                '<div class="card__actions">' +
-                  skills.map(function(s){ return '<span class="tag" style="padding:.28rem .55rem;">'+escapeHtml(s)+'</span>'; }).join('') +
-                '</div>' +
-              '</div>' +
-            '</article>'
-          );
-        }
-
-        function renderCourse(c){
-          return (
-            '<article class="card" data-course-id="'+c.id+'" tabindex="0">' +
-              '<div class="card__img"><img src="'+c.thumbnail+'" alt="'+escapeHtml(c.title)+'" loading="lazy"></div>' +
-              '<div class="card__body">' +
-                '<div class="card__top">' +
-                  '<span class="tag tag--status">'+escapeHtml(c.category)+'</span>' +
-                  '<span class="tag">'+escapeHtml(c.difficulty)+'</span>' +
-                '</div>' +
-                '<div class="card__title">'+escapeHtml(c.title)+'</div>' +
-                '<div class="card__company">'+escapeHtml(c.instructor)+'</div>' +
-                '<div class="small" style="color:var(--muted); font-weight:800; line-height:1.6;">'+escapeHtml(c.description).slice(0,90) + (c.description.length>90?'…':'')+'</div>' +
-              '</div>' +
-            '</article>'
-          );
-        }
-
-        if(featuredJobs){
-          featuredJobs.innerHTML = jobs.slice(0,3).map(renderJob).join('');
-          featuredJobs.addEventListener('click', function(e){
-            var el = e.target && e.target.closest('[data-job-id]');
-            if(!el) return;
-            location.href = './jobs.html#job=' + encodeURIComponent(el.getAttribute('data-job-id'));
-          });
-        }
-
-        if(featuredCourses){
-          featuredCourses.innerHTML = courses.slice(0,3).map(renderCourse).join('');
-          featuredCourses.addEventListener('click', function(e){
-            var el = e.target && e.target.closest('[data-course-id]');
-            if(!el) return;
-            location.href = './courses.html#course=' + encodeURIComponent(el.getAttribute('data-course-id'));
-          });
-        }
-
-        var y = document.getElementById('year');
-        if(y) y.textContent = String(new Date().getFullYear());
-      });
-    })();
-  </script>
+    <div id="toast-container" class="toast-container"></div>
+    <script src="script.js"></script>
 </body>
 </html>
